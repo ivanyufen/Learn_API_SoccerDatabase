@@ -1,28 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import axios from 'axios';
+import { Route, Link } from 'react-router-dom';
+import Contact from './components/Contact';
+import Home from './components/Home';
+import TeamDetail from './components/TeamDetail';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+
+class App extends React.Component {
+
+    render() {
+        return (
+            <div className="text-center my-2">
+                <Link to="/"><h1>Welcome to BolaDatabase.com</h1></Link>
+                {/* <button className="btn btn-primary m-2">Klik Sini</button>
+                <Link to="/contact">Contact</Link> */}
+
+                <div>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/contact" component={Contact} />
+                    {/* ini artinya routing dinamis, kalo yg atas static */}
+                    <Route path="/:team" component={TeamDetail} />
+                </div>
+
+            </div>
+        )
+    }
 }
+
 
 export default App;
